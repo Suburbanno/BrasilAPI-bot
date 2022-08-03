@@ -63,6 +63,18 @@ bot.command('ddd', async ctx => {
 		if (e.response.status === 404) return ctx.reply('DDD não encontrado.');
 	}
 })
+bot.command('banco', async ctx => {
+	const bank_number = String(ctx.message.text).slice(7);
+	const bank_url = `https://brasilapi.com.br/api/banks/v1/${bank_number}`;
+
+	try {
+		const res = await axios.get(bank_url);
+
+		if (res.status === 200) return ctx.reply(`Nome: ${res.data.fullname}\ncódigo: ${(res.data.code)}\nISPB: ${(res.data.ispb)}`);
+	} catch (e) {
+		if (e.response.status === 404) return ctx.reply('O código do banco não foi encontrado.');
+	}
+})
 
 
 
