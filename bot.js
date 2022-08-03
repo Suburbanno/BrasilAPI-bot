@@ -47,7 +47,7 @@ bot.command('cnpj', async ctx => {
 	try {
 		const res = await axios.get(cnpj_url);
 
-		if (res.status === 200) return ctx.reply(`CNPJ: ${res.data.cnpj}\nIdentificador Matriz Filial: ${res.data.identificador_matriz_filial}\nDescrição Matriz Filial: ${res.data.descricao_matriz_filial}\nRazão Social: ${res.data.razao_social}\nNome Fantasia: ${res.data.nome_fantasia}\nSituação Cadastral: ${res.data.situacao_cadastral}\nDescrição situação cadastral: ${res.data.descricao_situacao_cadastral}\n`);
+		if (res.status === 200) return ctx.reply(`CNPJ: ${res.data.cnpj}\nIdentificador Matriz Filial: ${res.data.identificador_matriz_filial}\nDescrição Matriz Filial: ${res.data.descricao_identificador_matriz_filial}\nRazão Social: ${res.data.razao_social}\nNome Fantasia: ${res.data.nome_fantasia}\nSituação Cadastral: ${res.data.situacao_cadastral}\nDescrição situação cadastral: ${res.data.descricao_situacao_cadastral}\n`);
 	} catch (e) {
 		if (e.response.status === 404) return ctx.reply('CNPJ não encontrado.');
 	}
