@@ -20,7 +20,7 @@ Comandos
 /CEP <número> - Retorna informações de um determinado CEP.
 /CNPJ <número> - Retorna informações de um determinado CNPJ.
 /DDD <número> - Retorna informações de um determinado DDD.
-/banco <número> - Retorna informações de um determinado Banco.
+/BANCO <número> - Retorna informações de um determinado Banco.
 `;
 	try {
 		ctx.reply(helpMessage);
@@ -71,7 +71,7 @@ bot.command('banco', async ctx => {
 	try {
 		const res = await axios.get(bank_url);
 
-		if (res.status === 200) return ctx.reply(`Nome: ${res.data.fullName}\ncódigo: ${(res.data.code)}\nISPB: ${(res.data.ispb)}`);
+		if (res.status === 200) return ctx.reply(`Nome: ${res.data.fullName}\nCódigo: ${(res.data.code)}\nISPB: ${(res.data.ispb)}`);
 	} catch (e) {
 		if (e.response.status === 404) return ctx.reply('O código do banco não foi encontrado.');
 	}
