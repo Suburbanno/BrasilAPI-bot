@@ -12,15 +12,15 @@ const unMask = value => value.replace(/\D/g, '');
 
 
 
-bot.start(ctx => ctx.reply("Olá, aqui eu mostro algumas funções do Brasil-API, use /help para maiores informações."));
+bot.start(ctx => ctx.reply("Olá, aqui eu mostro algumas funções do Brasil-API, use /help para mais informações."));
 
 bot.command('help', async ctx => {
 	const helpMessage = `
 Comandos
-/CEP <número> - Retorna informações de um determinado CEP.
-/CNPJ <número> - Retorna informações de um determinado CNPJ.
-/DDD <número> - Retorna informações de um determinado DDD.
-/BANCO <número> - Retorna informações de um determinado Banco.
+/cep <número> - Retorna informações de um determinado CEP.
+/cnpj <número> - Retorna informações de um determinado CNPJ.
+/ddd <número> - Retorna informações de um determinado DDD.
+/banco <número> - Retorna informações de um determinado Banco.
 `;
 	try {
 		ctx.reply(helpMessage);
@@ -73,7 +73,7 @@ bot.command('banco', async ctx => {
 
 		if (res.status === 200) return ctx.reply(`Nome: ${res.data.fullName}\nCódigo: ${(res.data.code)}\nISPB: ${(res.data.ispb)}`);
 	} catch (e) {
-		if (e.response.status === 404) return ctx.reply('O código do banco não foi encontrado.');
+		if (e.response.status === 404) return ctx.reply('Banco não encontrado.');
 	}
 })
 
@@ -82,7 +82,7 @@ bot.command('banco', async ctx => {
 const startBot = async () => {
 	try {
 		await bot.launch();
-		console.log('✅ - » Bot Brasil-Api iniciado com sucesso.');
+		console.log('✅ - Brasil-Api iniciado com sucesso.');
 	} catch(error) {
 		console.error(error);
 	}
