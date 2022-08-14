@@ -91,7 +91,7 @@ bot.command('dominio', async ctx => {
 	}
 })
 bot.command('taxa', async ctx => {
-	const sigla = String(ctx.message.text).slice(7);
+	const sigla = String(ctx.message.text).slice(6);
 	const taxas_url = `https://brasilapi.com.br/api/taxas/v1/${sigla}`;
 
 	try {
