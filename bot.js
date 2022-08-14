@@ -85,7 +85,7 @@ bot.command('dominio', async ctx => {
 	try {
 		const res = await axios.get(domain_url);
 
-		if (res.status === 200) return ctx.reply(`Status: ${res.data.status}\nFQDN: ${(res.data.fqdn)}\nHosts:\n${(res.data.hosts).join('\n')}\nExpira em: ${res['expires-at']}\nSugestões:\n${(res.data.suggestions).join('\n')}`);
+		if (res.status === 200) return ctx.reply(`Status: ${res.data.status}\nFQDN: ${(res.data.fqdn)}\nHosts:\n${(res.data.hosts).join('\n')}\nExpira em: ${res.data['expires-at']}\nSugestões:\n${(res.data.suggestions).join('\n')}`);
 	} catch (e) {
 		if (e.response.status === 400) return ctx.reply('Erro ao consultar o domínio .br');
 	}
