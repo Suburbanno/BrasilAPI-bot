@@ -109,7 +109,6 @@ bot.command('dominio', async ctx => {
 		Status: ${res.data.status}\n
 		FQDN: ${(res.data.fqdn)}\n
 		Hosts: ${(res.data.hosts).join('\n')}\n
-		Expira em: ${res.data['expires-at']}\n
 		Sugestões: ${(res.data.suggestions).join('\n')}
 		`);
 	} catch (e) {
