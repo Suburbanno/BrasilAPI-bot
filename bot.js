@@ -113,7 +113,7 @@ bot.command('dominio', async ctx => {
 		Sugestões: ${(res.data.suggestions).join('\n')}
 		`);
 	} catch (e) {
-		if (e.response.status === 400) return ctx.reply('Erro ao consultar o domínio br.');
+		if (e.response.status === 400) return ctx.reply('Erro ao consultar o domínio .br');
 	}
 })
 
