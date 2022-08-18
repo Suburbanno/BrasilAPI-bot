@@ -21,7 +21,6 @@ Comandos
 /cnpj <número> - Retorna informações de um determinado CNPJ.
 /ddd <número> - Retorna informações de um determinado DDD.
 /banco <número> - Retorna informações de um determinado Banco.
-/dominio <dominio> - Retorna informações de um determinado dominio .br.
 /taxa <sigla> - Retorna informações sobre uma determinada taxa.
 `;
 	try {
@@ -76,18 +75,6 @@ bot.command('banco', async ctx => {
 		if (res.status === 200) return ctx.reply(`Nome: ${res.data.fullName}\nCódigo: ${(res.data.code)}\nISPB: ${(res.data.ispb)}`);
 	} catch (e) {
 		if (e.response.status === 404) return ctx.reply('Banco não encontrado.');
-	}
-})
-bot.command('dominio', async ctx => {
-	const domain_br = String(ctx.message.text).slice(9);
-	const domain_url = `https://brasilapi.com.br/api/registrobr/v1/${domain_br}`;
-
-	try {
-		const res = await axios.get(domain_url);
-
-		if (res.status === 200) return ctx.reply(`Status: ${res.data.status}\nFQDN: ${(res.data.fqdn)}\nHosts:\n${(res.data.hosts).join('\n')}\nExpira em: ${res.data['expires-at']}\nSugestões:\n${(res.data.suggestions).join('\n')}`);
-	} catch (e) {
-		if (e.response.status === 400) return ctx.reply('Erro ao consultar o domínio .br');
 	}
 })
 bot.command('taxa', async ctx => {
