@@ -22,6 +22,7 @@ Comandos
 /ddd <número> - Retorna informações de um determinado DDD.
 /banco <número> - Retorna informações de um determinado Banco.
 /taxa <sigla> - Retorna informações sobre uma determinada taxa.
+/dominio <nome> - Retorna informações do domínio buscado.
 `;
 	try {
 		ctx.reply(helpMessage);
@@ -111,6 +112,25 @@ Valor R$: ${(res.data.valor)}
 		`);
 	} catch (e) {
 		if (e.response.status === 404) return ctx.reply('Taxa ou Sigla não encontrada');
+	}
+})
+
+bot.command('dominio', async ctx => {
+	const domain_br = String(ctx.message.text).slice(9);
+	const domain_url = `https://brasilapi.com.br/api/registrobr/v1/${domain_br}`;
+
+	try {
+		const res = await axios.get(domain_url);
+
+		if (res.status === 200) return ctx.reply(`
+		Status: ${res.data.status}\n
+		FQDN: ${(res.data.fqdn)}\n
+		Hosts: ${(res.data.hosts).join('\n')}\n
+		Expira em: ${res.data['expires-at']}\n
+		Sugestões: ${(res.data.suggestions).join('\n')}
+		`);
+	} catch (e) {
+		if (e.response.status === 400) return ctx.reply('Erro ao consultar o domínio br.');
 	}
 })
 
