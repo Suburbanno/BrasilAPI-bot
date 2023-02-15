@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.27.2",
-    "telegraf": "^3.33.0",
-    "dotenv": "^16.0.1"
+    "dotenv": "^16.0.3",
+    "telegraf": "^3.33.0"
   }
 }
